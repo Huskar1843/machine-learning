@@ -207,7 +207,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 引入这个项目需要的库</span>
@@ -261,7 +261,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 显示数据集的一个描述</span>
@@ -388,7 +388,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：从数据集中选择三个你希望抽样的数据点的索引</span>
@@ -487,11 +487,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong></p>
+<p><strong>回答:</strong>
+    从数据的统计描述可以看出每一个产品类型的花费的标准差(std)都比较大, 说明数据点比较分散，因此采用四分位数进行分析。</p>
 
-<pre><code>- 0: 零售商，各种物品均有适量采购
-- 1：咖啡馆，牛奶采购量明显高于其他两个客户
-- 2：餐饮业, Fresh，Fronzen和Delicatessen采购量都很多</code></pre>
+<pre><code>- 0: 零售商，各种物品均有适量采购，除了Delicatessen外其他产品种类的采购花费都在25%~75%分位区间，整体采购花费比例比较均衡。
+- 1：咖啡馆，Milk， Grocery， Detergents_Paper， Delicatessen采购花费高于75%分位，Fronzen低于25%分位比较符合一般咖啡馆的特征。
+- 2：餐饮业, Fresh，Fronzen, Delicatessen花费都高于75%分位，比较符合餐饮业的特征。</code></pre>
 
 </div>
 </div>
@@ -518,7 +519,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -553,6 +554,14 @@ div#notebook {
 
 
 <div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>C:\Localdata\software\Anaconda2\lib\site-packages\sklearn\cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  &quot;This module will be removed in 0.20.&quot;, DeprecationWarning)
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>label =  Fresh , score =  -0.385749710204
 label =  Milk , score =  0.156275395017
@@ -560,14 +569,6 @@ label =  Grocery , score =  0.681884008544
 label =  Frozen , score =  -0.210135890125
 label =  Detergents_Paper , score =  0.271666980627
 label =  Delicatessen , score =  -2.2547115372
-</pre>
-</div>
-</div>
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>C:\Localdata\software\Anaconda2\lib\site-packages\sklearn\cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-  &quot;This module will be removed in 0.20.&quot;, DeprecationWarning)
 </pre>
 </div>
 </div>
@@ -609,7 +610,7 @@ label =  Delicatessen , score =  -2.2547115372
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 对于数据中的每一对特征构造一个散布矩阵</span>
@@ -2421,7 +2422,7 @@ Ny7+WPF7swAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：使用自然对数缩放数据</span>
@@ -6163,7 +6164,7 @@ AAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 展示经过对数变换后的样本数据</span>
@@ -6254,7 +6255,7 @@ AAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">outliers</span>  <span class="o">=</span> <span class="p">[]</span>
@@ -6975,7 +6976,7 @@ outlier&apos;s row numbers:  [38, 57, 65, 66, 75, 81, 86, 95, 96, 98, 109, 128, 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span> <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -7379,10 +7380,10 @@ AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong> 第一个和第二个主成分总共表示了0.7252的方差，前四一个主成分总共表示了0.9279的方差。</p>
 <ul>
-<li>主成分1：主要由Detergents_Paper,Grocery和Milk的组合。</li>
-<li>主成分2：主要由Frozen, Fresh和Delicatessen的组合</li>
-<li>主成分3：主要由Fresh构成</li>
-<li>主成分4：主要由Frozen构成</li>
+<li>主成分1：Detergents_Paper(0.75),Grocery(0.45)和Milk(0.4)的具有较高的权重，可能代表零售业。</li>
+<li>主成分2：Frozen(0.65), Fresh(0.6)和Delicatessen(0.5)占较高比重，可能代表餐饮业。</li>
+<li>主成分3：主要与和Delicatessen(0.5)正相关，与Fresh(-0.7)负相关，可能代表以出售和Delicatessen的熟食店。</li>
+<li>主成分4：主要与和Delicatessen(0.5)正相关，与Frozen(-0.7)负相关，同主成分3类似可能代表以出售和Delicatessen的熟食店。</li>
 </ul>
 
 </div>
@@ -7400,7 +7401,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 展示经过PCA转换的sample log-data</span>
@@ -7488,7 +7489,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：通过在good data上进行PCA，将其转换成两个维度</span>
@@ -7521,7 +7522,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 展示经过两个维度的PCA转换之后的样本log-data</span>
@@ -7632,7 +7633,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">mixture</span> 
@@ -7718,7 +7719,7 @@ number of clusters:  2 , silhouette_score =  0.447411995571
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 从已有的实现中展示聚类的结果</span>
@@ -8469,7 +8470,7 @@ rkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO：反向转换中心点</span>
@@ -8557,8 +8558,8 @@ rkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 
-<pre><code>- segment 0: 相对重要的花费为Fresh品类，其他种类花费比较小，其特征比较类似餐馆。
-- segment 1: 各品类的花费相对比较均衡，离各品类的统计平均值不远, 其特征比较类似超市，杂货店等。</code></pre>
+<pre><code>- segment 0: Fresh, Milk, Fronzen的花费高于总体统计分布的50%分位，Grocery，Detergents_Paper，Delicatessen小于总体统计的50%分位，比较符合餐饮业的特征。
+- segment 1: Grocery, Detergents_Paper,Delicatessen的花费高于总体统计分布的50%分位, 其特征比较类似超市，杂货店等。</code></pre>
 
 </div>
 </div>
@@ -8576,7 +8577,7 @@ rkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 显示预测结果</span>
@@ -8610,11 +8611,10 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答:</strong></p>
-
-<pre><code>- 样本点0和1属于segment 0， 属于餐馆分类。
-- 样本点2属于segment 1， 属于超市/杂货店分类。
-与之前的直觉预测并不相符。</code></pre>
+<p><strong>回答:</strong>
+     样本点0,1距离segment1的中心更近，可能属于segment1.
+     样本点2距离segment0的中心更近，可能属于segment0。
+     运行算法后发现样本点0,1属于segment1，样本点2属于segment0.</p>
 
 </div>
 </div>
@@ -8685,7 +8685,7 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 根据‘Channel‘数据显示聚类的结果</span>
