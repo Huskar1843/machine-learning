@@ -75,7 +75,7 @@ class Environment(object):
 
         # Primary agent and associated parameters
         self.primary_agent = None  # to be set explicitly
-        self.enforce_deadline = False
+        self.enforce_deadline = True
 
         # Trial data (updated at the end of each trial)
         self.trial_data = {
@@ -119,6 +119,8 @@ class Environment(object):
         # Pick a start and a destination
         start = random.choice(self.intersections.keys())
         destination = random.choice(self.intersections.keys())
+        
+        
 
         # Ensure starting location and destination are not too close
         while self.compute_dist(start, destination) < 4:
