@@ -8,7 +8,7 @@ class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """ 
 
-    def __init__(self, env, learning=True, epsilon=1, alpha=0.3):
+    def __init__(self, env, learning=True, epsilon=1, alpha=0.8):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment 
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -44,8 +44,14 @@ class LearningAgent(Agent):
             self.epsilon = 0
             self.alpha = 0
         else:
-            self.epsilon = math.exp(-0.1*self.current_time_step) #math.pow(0.9, self.current_time_step) #math.exp(-0.1*self.current_time_step) #math.exp(-self.alpha*self.current_time_step) #1/math.pow(self.current_time_step, 2) #math.exp(-self.alpha*self.current_time_step)  #self.epsilon - 0.05   # math.exp(-self.alpha*self.current_time_step)
+            self.epsilon = math.exp(-0.012*self.current_time_step) #math.exp(-0.01*self.current_time_step) #math.pow(0.9, self.current_time_step) #math.exp(-0.1*self.current_time_step) #math.exp(-self.alpha*self.current_time_step) #1/math.pow(self.current_time_step, 2) #math.exp(-self.alpha*self.current_time_step)  #self.epsilon - 0.05   # math.exp(-self.alpha*self.current_time_step)
+            
+            self.alpha = self.alpha - 0.0025 #math.exp(-0.004*self.current_time_step) #math.exp(-0.005*self.current_time_step)
+            if self.alpha <= 0.15:
+                self.alpha = 0.15
+
             self.current_time_step += 1
+
 
         return None
 
@@ -67,7 +73,7 @@ class LearningAgent(Agent):
         print "inputs",  inputs
         print "deadline", deadline
         binary_deadline = deadline > 0
-        state = (waypoint, inputs["light"], inputs["left"], inputs["right"],binary_deadline)
+        state = (waypoint, inputs["light"], inputs["left"], inputs["right"])
         print "current state", state
         return state
 
