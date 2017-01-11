@@ -8,7 +8,7 @@ class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
         This is the object you will be modifying. """ 
 
-    def __init__(self, env, learning=True, epsilon=1, alpha=0.8):
+    def __init__(self, env, learning=True, epsilon=1, alpha=0.5):
         super(LearningAgent, self).__init__(env)     # Set the agent in the evironment 
         self.planner = RoutePlanner(self.env, self)  # Create a route planner
         self.valid_actions = self.env.valid_actions  # The set of valid actions
@@ -44,11 +44,12 @@ class LearningAgent(Agent):
             self.epsilon = 0
             self.alpha = 0
         else:
-            self.epsilon = math.exp(-0.012*self.current_time_step) #math.exp(-0.01*self.current_time_step) #math.pow(0.9, self.current_time_step) #math.exp(-0.1*self.current_time_step) #math.exp(-self.alpha*self.current_time_step) #1/math.pow(self.current_time_step, 2) #math.exp(-self.alpha*self.current_time_step)  #self.epsilon - 0.05   # math.exp(-self.alpha*self.current_time_step)
+            self.epsilon = math.exp(-0.005*self.current_time_step) #math.exp(-0.01*self.current_time_step) #math.pow(0.9, self.current_time_step) #math.exp(-0.1*self.current_time_step) #math.exp(-self.alpha*self.current_time_step) #1/math.pow(self.current_time_step, 2) #math.exp(-self.alpha*self.current_time_step)  #self.epsilon - 0.05   # math.exp(-self.alpha*self.current_time_step)
             
-            self.alpha = self.alpha - 0.0025 #math.exp(-0.004*self.current_time_step) #math.exp(-0.005*self.current_time_step)
-            if self.alpha <= 0.15:
-                self.alpha = 0.15
+            #self.alpha = self.alpha - 0.0005 #math.exp(-0.004*self.current_time_step) #math.exp(-0.005*self.current_time_step)
+            #if self.alpha <= 0.2:
+            #    self.alpha = 0.2
+            #self.alpha = math.exp(-0.005*self.current_time_step)
 
             self.current_time_step += 1
 
@@ -73,7 +74,7 @@ class LearningAgent(Agent):
         print "inputs",  inputs
         print "deadline", deadline
         binary_deadline = deadline > 0
-        state = (waypoint, inputs["light"], inputs["left"], inputs["right"])
+        state = (waypoint, inputs["light"],  inputs["oncoming"], inputs["left"], inputs["right"])
         print "current state", state
         return state
 
@@ -131,7 +132,7 @@ class LearningAgent(Agent):
         #   Otherwise, choose an action with the highest Q-value for the current state
         if self.learning and random.random() >= self.epsilon:
             maxQ = self.get_maxQ(state)
-            maxQ_actions = [k for k,v in self.Q[state].iteritems() if v == maxQ]                            
+            maxQ_actions = [a for a in self.valid_actions if self.Q[state][a] == maxQ]                           
             print "max Q action: ", maxQ_actions
             action = random.choice(maxQ_actions)    
         else:
