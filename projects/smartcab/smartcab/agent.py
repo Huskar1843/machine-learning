@@ -74,7 +74,7 @@ class LearningAgent(Agent):
         print "inputs",  inputs
         print "deadline", deadline
         binary_deadline = deadline > 0
-        state = (waypoint, inputs["light"],  inputs["oncoming"], inputs["left"], inputs["right"])
+        state = (waypoint, inputs["light"],  inputs["oncoming"], inputs["left"])
         print "current state", state
         return state
 
