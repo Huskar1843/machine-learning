@@ -335,7 +335,9 @@ div#notebook {
 </ul>
 </li>
 <li><em><code>environment.py</code></em>: <em>act()</em>  is called when an agent performs an action.</li>
-<li><em><code>simulator.py</code></em>:  <em><code>'render_text()'</code></em>  is the non-GUI render display of the simulation, the simulated trial data will be rendered in the terminal/command prompt, while the <em><code>'render()'</code></em> is the GUI render display of the simulation, it will display the visual data. </li>
+<li><em><code>simulator.py</code></em>:  <em><code>'render_text()'</code></em>  is the non-GUI render display of the simulation, the simulated trial data will be rendered in the terminal/command prompt, while the <em><code>'render()'</code></em> is the GUI render display of the simulation, it will display the visual data.   </li>
+<li><em><code>planner.py</code></em> ：the <em><code>'next_waypoint()</code></em> function consider East-West direction first
+.</li>
 </ul>
 
 </div>
@@ -1443,7 +1445,7 @@ ZmZWQ06yzMzMzMzMauj/A2Wd939z4iJ9AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li><em>near 60% chance the drving agent making bad decisions, near 40% percent of those bad decisions casue accidents</em>  </li>
+<li><em>around 40% chance the drving agent making bad decisions, near 10% percent of those bad decisions casue accidents</em>  </li>
 <li><em>yes, since the agent is drving randomly, it is very unreliable.</em>  </li>
 <li><em>The agent received negative rewards, and the rewards suggest it has been penalized, but cannot tell whether it is heavy engouh.</em>  </li>
 <li><em>no, the outcome seems no change.</em>  </li>
@@ -1542,7 +1544,7 @@ The defined state is ('waypoint','light', 'oncoming','left')  the possible state
 <li>'oncoming': 3 (None,forward, left, right)</li>
 <li>'left': 4 (None, forward, left, right)    </li>
 </ul>
-<p>So the size of the state space is = 3 <code>*</code> 2 <code>*</code> 3 <code>*</code>4 = 72, it it not a very huge state space, thus the driving agent could learn a policy for each possible state within a reasonable number of training trials.</p>
+<p>So the size of the state space is = 3 <code>*</code> 2 <code>*</code> 4 <code>*</code>4 = 96, it it not a very huge state space, thus the driving agent could learn a policy for each possible state within a reasonable number of training trials.</p>
 
 </div>
 </div>
@@ -4395,14 +4397,15 @@ DrLMzMzMzMyayEGWmZmZmZlZE/1/gXQfuD8/0PkAAAAASUVORK5CYII=
 <li>(left, green, foward, forward): turn left</li>
 </ul>
 </li>
-<li><p>example:<br>
+<li><p>No state was found that in which the policy is different than what would be expected from an optimal policy</p>
+</li>
+<li>example:<br>
 ('right', 'green', 'right', 'right')<br>
 -- forward : 0.01<br>
 -- right : 1.89<br>
 -- None : 0.00<br>
 -- left : -10.27<br>
-in this situation, the light is green, thus the agent can go to next waypoint (turn right) by following the light. In the meantime, the oncoming car will turn to its right, which is the driving agent's left, thus it will not affect the safety of the driving agent. So dose the car on the right, it will turn to its right and will not affect the safety of the agent also.</p>
-</li>
+in this situation, the light is green, thus the agent can go to next waypoint (turn right) by following the light. In the meantime, the oncoming car will turn to its right, which is the driving agent's left, thus it will not affect the safety of the driving agent. So dose the car on the right, it will turn to its right and will not affect the safety of the agent also.  </li>
 </ul>
 
 </div>
